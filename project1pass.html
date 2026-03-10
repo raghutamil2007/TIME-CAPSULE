@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forgot Password - Time Capsule Cloud</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
+
+body{
+background:#f4efe9;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+}
+
+/* NAVBAR */
+
+.navbar{
+height:70px;
+background:#ffffff;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 40px;
+border-bottom:1px solid #e6dfd7;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:12px;
+font-weight:600;
+font-size:18px;
+color:#2d2d2d;
+}
+
+.logo-icon{
+width:34px;
+height:34px;
+background:#b65f2c;
+border-radius:8px;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:18px;
+}
+
+.help{
+width:38px;
+height:38px;
+border-radius:10px;
+background:#efe8e0;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:600;
+color:#2d2d2d;
+cursor:pointer;
+}
+
+/* CENTER AREA */
+
+.main{
+flex:1;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:30px;
+}
+
+/* CARD */
+
+.card{
+width:420px;
+background:white;
+padding:40px;
+border-radius:18px;
+box-shadow:0 12px 30px rgba(0,0,0,0.06);
+text-align:left;
+}
+
+/* ICON */
+
+.icon-circle{
+width:48px;
+height:48px;
+border-radius:50%;
+background:#f1e3d8;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:22px;
+color:#b65f2c;
+margin-bottom:20px;
+}
+
+/* TEXT */
+
+h1{
+font-size:28px;
+margin-bottom:10px;
+color:#1f2933;
+}
+
+.subtitle{
+color:#6b7280;
+font-size:15px;
+line-height:1.6;
+margin-bottom:28px;
+}
+
+/* FORM */
+
+label{
+font-size:14px;
+font-weight:500;
+color:#374151;
+}
+
+.input-box{
+position:relative;
+margin-top:8px;
+margin-bottom:22px;
+}
+
+.input-box input{
+width:100%;
+padding:12px 14px 12px 40px;
+border-radius:12px;
+border:1px solid #e6dfd7;
+font-size:14px;
+}
+
+.input-icon{
+position:absolute;
+left:12px;
+top:50%;
+transform:translateY(-50%);
+color:#9ca3af;
+font-size:16px;
+}
+
+/* BUTTON */
+
+.btn{
+width:100%;
+padding:13px;
+background:#b65f2c;
+border:none;
+border-radius:12px;
+color:white;
+font-size:15px;
+font-weight:600;
+cursor:pointer;
+box-shadow:0 6px 14px rgba(182,95,44,0.25);
+transition:0.2s;
+}
+
+.btn:hover{
+background:#9c4f22;
+}
+
+/* BACK LINK */
+
+.back{
+margin-top:16px;
+display:flex;
+justify-content:center;
+font-size:14px;
+color:#7b7b7b;
+cursor:pointer;
+gap:6px;
+}
+
+/* FOOTER TEXT */
+
+.footer-text{
+margin-top:28px;
+padding-top:18px;
+border-top:1px solid #e6dfd7;
+font-size:13px;
+text-align:center;
+color:#6b7280;
+}
+
+.footer-text a{
+color:#b65f2c;
+text-decoration:none;
+font-weight:500;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+
+<div class="logo">
+<div class="logo-icon">⏳</div>
+Time Capsule Cloud
+</div>
+
+<div class="help">?</div>
+
+</div>
+
+<div class="main">
+
+<div class="card">
+
+<div class="icon-circle">🔐</div>
+
+<h1>Forgot password?</h1>
+
+<p class="subtitle">
+No worries, we'll send you reset instructions to get you back into your vault.
+</p>
+
+<label>Email address</label>
+
+<div class="input-box">
+<span class="input-icon">✉️</span>
+<input type="email" placeholder="you@example.com">
+</div>
+
+<button class="btn">Reset password</button>
+
+<div class="back">← Back to log in</div>
+
+<div class="footer-text">
+If you no longer have access to this email account, please contact our 
+<a href="#">Support Team</a>.
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+document.querySelector(".btn").addEventListener("click",function(){
+alert("Reset instructions sent to your email.");
+})
+
+</script>
+
+</body>
+</html>
