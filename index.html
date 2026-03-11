@@ -1,644 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TimeCapsule Cloud — Send Messages to the Future</title>
-  <meta name="description"
-    content="Send messages, videos, or files to your future self or someone else — locked until a specific date or event. Encrypted and stored in the cloud." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Time Vault</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- ── BACKGROUND ── -->
-  <div class="bg-orbs">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-  </div>
-  <canvas id="stars-canvas"></canvas>
+<div class="container">
 
-  <!-- ── NAVIGATION ── -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="#" class="nav-logo">
-        <span class="logo-icon">⏳</span>
-        <span>TimeCapsule<span class="logo-accent">Cloud</span></span>
-      </a>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#how-it-works">How It Works</a></li>
-        <li><a href="#dashboard">My Capsules</a></li>
-        <li><a href="#create" class="nav-cta">Create Capsule</a></li>
-      </ul>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
+<!-- Sidebar -->
+<div class="sidebar">
 
-  <!-- ══════════════════════════════════
-       SCREEN 1 — HERO
-  ══════════════════════════════════ -->
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <div class="hero-badge">
-        <span class="badge-dot"></span>
-        <span>🏅 #4 Mind-Blowing App — 10/10 Factor</span>
-      </div>
-      <h1 class="hero-title">
-        Send a Message<br />
-        <span class="gradient-text">to the Future</span>
-      </h1>
-      <p class="hero-subtitle">
-        Lock your messages, videos, or files in an encrypted vault — delivered to
-        your future self or someone special on a specific date or life event.
-      </p>
-      <div class="hero-actions">
-        <a href="#create" class="btn btn-primary" id="hero-cta">
-          <span>Create Your Capsule</span>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </a>
-        <a href="#how-it-works" class="btn btn-ghost">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10" />
-            <polygon points="10 8 16 12 10 16 10 8" />
-          </svg>
-          <span>See How It Works</span>
-        </a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat">
-          <span><span class="stat-number" data-target="12400">0</span><span class="stat-suffix">+</span></span>
-          <span class="stat-label">Capsules Created</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span><span class="stat-number" data-target="98">0</span><span class="stat-suffix">%</span></span>
-          <span class="stat-label">Delivery Rate</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span><span class="stat-number" data-target="50">0</span><span class="stat-suffix">+</span></span>
-          <span class="stat-label">Countries</span>
-        </div>
-      </div>
-    </div>
+<div class="logo">
+<h2>⏳ Time Vault</h2>
+<p>cloud</p>
+</div>
 
-    <!-- Hero Visual — Floating Capsule Card -->
-    <div class="hero-visual">
-      <div class="capsule-card floating" id="hero-cap-card">
-        <div class="capsule-card-header">
-          <div class="capsule-icon">🔒</div>
-          <div class="capsule-meta">
-            <span class="capsule-title">To: Future Me</span>
-            <span class="capsule-date">Unlocks Dec 31, 2030</span>
-          </div>
-          <div class="capsule-badge locked">Locked</div>
-        </div>
-        <div class="capsule-body">
-          <p class="capsule-preview">"Hey future me, I hope you've achieved everything we dreamed of. Remember when..."
-          </p>
-        </div>
-        <div class="capsule-footer">
-          <div class="capsule-countdown">
-            <span class="countdown-label">Unlocks in</span>
-            <div class="countdown-display" id="hero-countdown">
-              <div class="cd-unit"><span class="cd-val" id="cd-days">--</span><span class="cd-lbl">days</span></div>
-              <span class="cd-sep">:</span>
-              <div class="cd-unit"><span class="cd-val" id="cd-hours">--</span><span class="cd-lbl">hrs</span></div>
-              <span class="cd-sep">:</span>
-              <div class="cd-unit"><span class="cd-val" id="cd-mins">--</span><span class="cd-lbl">min</span></div>
-            </div>
-          </div>
-          <div class="capsule-tags">
-            <span class="tag">✉️ Message</span>
-            <span class="tag">🔐 Encrypted</span>
-          </div>
-        </div>
-      </div>
-      <!-- Decorative Mini Capsules -->
-      <div class="mini-capsule mc-1">🎂<span>Birthday 2027</span></div>
-      <div class="mini-capsule mc-2">🎓<span>Graduation</span></div>
-      <div class="mini-capsule mc-3">💍<span>Anniversary</span></div>
-    </div>
-  </section>
+<ul class="menu">
+<li>Dashboard</li>
+<li class="active">My Capsules</li>
+<li>Create</li>
+<li>About</li>
+<li>Contact</li>
+</ul>
 
-  <!-- ══════════════════════════════════
-       SCREEN 3 — HOW IT WORKS
-  ══════════════════════════════════ -->
-  <section class="section" id="how-it-works">
-    <div class="section-container">
-      <div class="section-header fade-in-up">
-        <span class="section-tag">Process</span>
-        <h2>How It <span class="gradient-text">Works</span></h2>
-        <p>Three simple steps to preserve your most precious moments</p>
-      </div>
-      <div class="steps-grid">
-        <div class="step-card fade-in-up">
-          <span class="step-num">01</span>
-          <div class="step-icon-wrap">
-            <div class="step-icon">✍️</div>
-          </div>
-          <h3>Write Your Message</h3>
-          <p>Compose a message, upload photos, videos, or files. Add any content you want to preserve for the future.
-          </p>
-        </div>
-        <div class="step-card fade-in-up">
-          <span class="step-num">02</span>
-          <div class="step-icon-wrap">
-            <div class="step-icon">📅</div>
-          </div>
-          <h3>Set the Unlock Date</h3>
-          <p>Choose a specific date, a life milestone (birthday, graduation), or event trigger for when the capsule
-            opens.</p>
-        </div>
-        <div class="step-card fade-in-up">
-          <span class="step-num">03</span>
-          <div class="step-icon-wrap">
-            <div class="step-icon">�</div>
-          </div>
-          <h3>Auto-Delivered</h3>
-          <p>On the unlock date, your capsule is automatically decrypted and delivered via email — right on schedule.
-          </p>
-        </div>
-      </div>
-      <div class="tech-stack fade-in-up">
-        <span class="tech-label">Powered by</span>
-        <div class="tech-pills">
-          <span class="tech-pill">🔥 Firebase</span>
-          <span class="tech-pill">⚡ Supabase</span>
-          <span class="tech-pill">📧 Resend</span>
-          <span class="tech-pill">🔐 AES-256</span>
-        </div>
-      </div>
-    </div>
-  </section>
+</div>
 
-  <!-- ══════════════════════════════════
-       SCREEN 4 — DASHBOARD
-  ══════════════════════════════════ -->
-  <section class="section dashboard-section" id="dashboard">
-    <div class="section-container">
-      <div class="section-header fade-in-up">
-        <span class="section-tag">Your Vault</span>
-        <h2>My <span class="gradient-text">Capsules</span></h2>
-        <p>Manage your digital legacy across the spans of time</p>
-      </div>
 
-      <!-- Stats -->
-      <div class="dashboard-stats fade-in-up">
-        <div class="stat-card">
-          <p class="stat-card-label">Total Capsules</p>
-          <div class="stat-card-value">07</div>
-        </div>
-        <div class="stat-card">
-          <p class="stat-card-label">Upcoming</p>
-          <div class="stat-card-value">03</div>
-        </div>
-        <div class="stat-card">
-          <p class="stat-card-label">Delivered</p>
-          <div class="stat-card-value">04</div>
-        </div>
-      </div>
+<!-- Main Content -->
+<div class="main">
 
-      <!-- Filter Tabs -->
-      <div class="filter-tabs fade-in-up">
-        <button class="filter-tab active" data-filter="all">All</button>
-        <button class="filter-tab" data-filter="locked">🔒 Locked</button>
-        <button class="filter-tab" data-filter="scheduled">📅 Scheduled</button>
-        <button class="filter-tab" data-filter="delivered">✅ Delivered</button>
-      </div>
+<!-- Topbar -->
+<div class="topbar">
+<div class="search-box">
+<input type="text" placeholder="Search capsules, recipient">
+<button>Search</button>
+</div>
 
-      <!-- Capsule Cards Grid -->
-      <div class="capsules-grid fade-in-up" id="capsules-grid">
+<div class="icons">
+<span>🔔</span>
+<span>✉️</span>
+<span>⚙️</span>
+</div>
+</div>
 
-        <!-- Card 1 — Locked -->
-        <div class="cap-card" data-status="locked" id="cap-1" onclick="openDetailModal()">
-          <div class="cap-card-header">
-            <span class="cap-card-title">🔒 To: Future Me</span>
-            <span class="status-badge status-locked">Locked</span>
-          </div>
-          <p class="cap-card-desc">Reflections on my current life goals and where I hope to be in ten years.</p>
-          <div class="cap-card-footer">
-            <span class="cap-meta-item">Unlocks Dec 31, 2030</span>
-            <div class="mini-countdown">
-              <div class="mini-cd-box"><span class="mini-cd-val" id="mc-days">--</span><span
-                  class="mini-cd-lbl">d</span></div>
-              <div class="mini-cd-box"><span class="mini-cd-val" id="mc-hrs">--</span><span class="mini-cd-lbl">h</span>
-              </div>
-              <div class="mini-cd-box"><span class="mini-cd-val" id="mc-min">--</span><span class="mini-cd-lbl">m</span>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <!-- Card 2 — Scheduled -->
-        <div class="cap-card" data-status="scheduled">
-          <div class="cap-card-header">
-            <span class="cap-card-title">🎂 Birthday Letter to Mom</span>
-            <span class="status-badge status-scheduled">Scheduled</span>
-          </div>
-          <p class="cap-card-desc">A special video message and collection of old family photos for her 60th birthday.
-          </p>
-          <div class="cap-card-footer">
-            <span class="cap-meta-item">🎉 Birthday Event</span>
-            <span class="cap-meta-item">Auto Delivery</span>
-          </div>
-        </div>
+<h1 class="title">My Stored Capsules</h1>
 
-        <!-- Card 3 — Delivered -->
-        <div class="cap-card" data-status="delivered" onclick="openCelebration()">
-          <div class="cap-card-header">
-            <span class="cap-card-title">🎓 Graduation Memories</span>
-            <span class="status-badge status-delivered">Delivered</span>
-          </div>
-          <p class="cap-card-desc">Photos from the 2021 ceremony and a letter from my former self about ambitions.</p>
-          <div class="cap-card-footer">
-            <span class="cap-meta-item">Opened March 2025</span>
-            <span class="cap-meta-item" style="color: #34d399;">✅ View Memory →</span>
-          </div>
-        </div>
 
-      </div>
-    </div>
-  </section>
+<!-- Filters -->
+<div class="filters">
 
-  <!-- ══════════════════════════════════
-       SCREEN 2 & 5 — CREATE CAPSULE FORM
-  ══════════════════════════════════ -->
-  <section class="section create-section" id="create">
-    <div class="section-container">
-      <div class="section-header fade-in-up">
-        <span class="section-tag">Get Started</span>
-        <h2>Create Your <span class="gradient-text">Capsule</span></h2>
-        <p>Take 2 minutes to preserve a message for the ages</p>
-      </div>
+<input type="text" placeholder="Search capsules...">
 
-      <div class="form-wrapper fade-in-up">
-        <!-- Step Progress Bar -->
-        <div class="form-steps-bar">
-          <div class="form-step active" data-form-step="1">
-            <span class="fs-num">1</span><span class="fs-label">Content</span>
-          </div>
-          <div class="form-step-line"></div>
-          <div class="form-step" data-form-step="2">
-            <span class="fs-num">2</span><span class="fs-label">Schedule</span>
-          </div>
-          <div class="form-step-line"></div>
-          <div class="form-step" data-form-step="3">
-            <span class="fs-num">3</span><span class="fs-label">Recipients</span>
-          </div>
-        </div>
+<div class="filter-buttons">
+<button class="active">All</button>
+<button>Locked</button>
+<button>Delivered</button>
+</div>
 
-        <form class="capsule-form" id="capsule-form" novalidate>
+<button class="create-btn">Create New Capsule</button>
 
-          <!-- ── STEP 1: Content ── -->
-          <div class="form-panel active" id="panel-1">
-            <h3 class="form-panel-title">What's in your capsule?</h3>
+</div>
 
-            <div class="form-group">
-              <label for="capsule-name">Capsule Name</label>
-              <input type="text" id="capsule-name" placeholder="e.g. Letter to 2030 Me" required />
-            </div>
 
-            <div class="form-group">
-              <label for="capsule-message">Your Message</label>
-              <textarea id="capsule-message" rows="6"
-                placeholder="Write your message here... Tell them what you hoped for, what you feared, what you dreamed..."
-                required></textarea>
-              <span class="char-counter"><span id="char-count">0</span> / 2000</span>
-            </div>
+<!-- Cards -->
+<div class="cards">
 
-            <div class="upload-zone" id="upload-zone">
-              <div class="upload-icon">📎</div>
-              <p>Drag &amp; drop files or <span class="upload-browse" id="upload-browse">Browse</span></p>
-              <small>Supports images, video, audio, PDF — up to 500MB</small>
-              <input type="file" id="file-input" multiple hidden accept="image/*,video/*,audio/*,.pdf,.docx,.txt" />
-            </div>
-            <div class="file-list" id="file-list"></div>
+<div class="card">
+<span class="tag locked">Locked</span>
+<h3>Future Advice for 2030</h3>
+<p>Time Remaining:</p>
+<h2>5 Years, 2 Months</h2>
+<button>View Details</button>
+</div>
 
-            <div class="form-type-select">
-              <label>Capsule Type</label>
-              <div class="type-pills">
-                <label class="type-pill active"><input type="radio" name="type" value="personal" checked /><span>✉️
-                    Personal</span></label>
-                <label class="type-pill"><input type="radio" name="type" value="group" /><span>👥 Group</span></label>
-                <label class="type-pill"><input type="radio" name="type" value="public" /><span>🌍 Public</span></label>
-              </div>
-            </div>
 
-            <button type="button" class="btn btn-primary btn-full next-step" data-next="2">
-              Next: Schedule
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
+<div class="card">
+<span class="tag locked">Locked</span>
+<h3>Graduation Memories</h3>
+<p>Unlock Countdown:</p>
+<h2>3 Years, 7 Months</h2>
+<button>View Details</button>
+</div>
 
-          <!-- ── STEP 2: Schedule ── -->
-          <div class="form-panel" id="panel-2">
-            <h3 class="form-panel-title">When should it open?</h3>
 
-            <div class="trigger-tabs">
-              <button type="button" class="trigger-tab active" data-trigger="date">📅 Specific Date</button>
-              <button type="button" class="trigger-tab" data-trigger="event">🎉 Life Event</button>
-            </div>
+<div class="card">
+<span class="tag delivered">Delivered</span>
+<h3>Message to My Past Self</h3>
+<p>Unlocked on</p>
+<h2>December 31, 2023</h2>
+<button>View Capsule</button>
+</div>
 
-            <div class="trigger-panel active" id="trigger-date">
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="unlock-date">Unlock Date</label>
-                  <input type="date" id="unlock-date" required />
-                </div>
-                <div class="form-group">
-                  <label for="unlock-time">Unlock Time</label>
-                  <input type="time" id="unlock-time" value="09:00" />
-                </div>
-              </div>
-            </div>
 
-            <div class="trigger-panel" id="trigger-event">
-              <div class="event-grid">
-                <label class="event-card"><input type="radio" name="event" value="birthday" /><span
-                    class="event-icon">🎂</span><span>Birthday</span></label>
-                <label class="event-card"><input type="radio" name="event" value="graduation" /><span
-                    class="event-icon">🎓</span><span>Graduation</span></label>
-                <label class="event-card"><input type="radio" name="event" value="anniversary" /><span
-                    class="event-icon">💍</span><span>Anniversary</span></label>
-                <label class="event-card"><input type="radio" name="event" value="new-year" /><span
-                    class="event-icon">🎆</span><span>New Year</span></label>
-                <label class="event-card"><input type="radio" name="event" value="retirement" /><span
-                    class="event-icon">🏖️</span><span>Retirement</span></label>
-                <label class="event-card"><input type="radio" name="event" value="custom" /><span
-                    class="event-icon">✨</span><span>Custom</span></label>
-              </div>
-            </div>
+<div class="card">
+<span class="tag locked">Locked</span>
+<h3>Graduation Memories</h3>
+<p>Time Remaining:</p>
+<h2>0 Days (Unlocking soon)</h2>
+<button>View Details</button>
+</div>
 
-            <div class="form-group toggle-row">
-              <label for="reminder-toggle">Send reminder 7 days before unlock</label>
-              <label class="toggle-switch">
-                <input type="checkbox" id="reminder-toggle" checked />
-                <span class="toggle-slider"></span>
-              </label>
-            </div>
 
-            <div class="form-nav">
-              <button type="button" class="btn btn-ghost prev-step" data-prev="1">← Back</button>
-              <button type="button" class="btn btn-primary next-step" data-next="3">
-                Next: Recipients
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </button>
-            </div>
-          </div>
+<div class="card">
+<span class="tag locked">Locked</span>
+<h3>Message to Future Me</h3>
+<p>Unlock Countdown:</p>
+<h2>11 Years, 10 Months</h2>
+<button>View Details</button>
+</div>
 
-          <!-- ── STEP 3: Recipients ── -->
-          <div class="form-panel" id="panel-3">
-            <h3 class="form-panel-title">Who receives it?</h3>
 
-            <div class="form-group">
-              <label for="sender-name">Your Name</label>
-              <input type="text" id="sender-name" placeholder="Your name" required />
-            </div>
-            <div class="form-group">
-              <label for="sender-email">Your Email</label>
-              <input type="email" id="sender-email" placeholder="you@example.com" required />
-            </div>
-            <div class="form-group">
-              <label for="recipient-email">Recipient Email <span class="optional">(leave blank to send to
-                  yourself)</span></label>
-              <input type="email" id="recipient-email" placeholder="recipient@example.com" />
-            </div>
+<div class="card">
+<span class="tag locked">Locked</span>
+<h3>Secret Recipe</h3>
+<p>Time Remaining:</p>
+<h2>11 Years, 10 Months</h2>
+<button>View Capsule</button>
+</div>
 
-            <div class="form-group toggle-row">
-              <label for="notify-toggle">Notify recipient that a capsule is waiting</label>
-              <label class="toggle-switch">
-                <input type="checkbox" id="notify-toggle" />
-                <span class="toggle-slider"></span>
-              </label>
-            </div>
+</div>
 
-            <div class="privacy-note">
-              <span>🔐</span>
-              <p>Your capsule is encrypted with AES-256 before storage. We cannot read your content.</p>
-            </div>
 
-            <div class="form-nav">
-              <button type="button" class="btn btn-ghost prev-step" data-prev="2">← Back</button>
-              <button type="submit" class="btn btn-primary btn-launch" id="launch-btn">
-                <span id="launch-text">🚀 Launch Capsule</span>
-                <div class="btn-loader" id="btn-loader" hidden></div>
-              </button>
-            </div>
-          </div>
+<!-- Pagination -->
+<div class="pagination">
+<button>‹</button>
+<span>Page 1 of 4</span>
+<button>›</button>
+</div>
 
-        </form>
 
-        <!-- Success State -->
-        <div class="form-success" id="form-success" hidden>
-          <div class="success-icon">🎉</div>
-          <h3>Your Capsule is Sealed!</h3>
-          <p>It's encrypted, stored safely, and will be delivered right on schedule.</p>
-          <div class="success-details" id="success-details"></div>
-          <button class="btn btn-primary" onclick="resetForm()">Create Another</button>
-        </div>
-      </div>
-    </div>
-  </section>
+<footer>
+<p>Terms of Service | Privacy Policy | Help Center</p>
+<p>Copyright © TimeVault. All rights reserved.</p>
+</footer>
 
-  <!-- ══════════════════════════════════
-       FOOTER
-  ══════════════════════════════════ -->
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-brand">
-        <a href="#" class="nav-logo">
-          <span class="logo-icon">⏳</span>
-          <span>TimeCapsule<span class="logo-accent">Cloud</span></span>
-        </a>
-        <p>Preserve moments. Deliver memories. Bridge time.</p>
-        <div class="social-links">
-          <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
-          <a href="#" class="social-link" aria-label="GitHub">⌥</a>
-          <a href="#" class="social-link" aria-label="Discord">◈</a>
-        </div>
-      </div>
-      <div class="footer-links">
-        <div class="footer-col">
-          <h4>Product</h4>
-          <a href="#how-it-works">How It Works</a>
-          <a href="#create">Create Capsule</a>
-          <a href="#dashboard">My Capsules</a>
-        </div>
-        <div class="footer-col">
-          <h4>Company</h4>
-          <a href="#">About</a>
-          <a href="#">Blog</a>
-          <a href="#">Careers</a>
-          <a href="#">Press</a>
-        </div>
-        <div class="footer-col">
-          <h4>Legal</h4>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-          <a href="#">Cookie Policy</a>
-          <a href="#">GDPR</a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2026 TimeCapsule Cloud. All rights reserved. Made with ❤️ for time travelers everywhere.</p>
-    </div>
-  </footer>
+</div>
+</div>
 
-  <!-- ══════════════════════════════════
-       SCREEN 6 — DETAIL MODAL (Locked Capsule)
-  ══════════════════════════════════ -->
-  <div class="modal-overlay" id="detail-modal">
-    <div class="modal-card">
-      <button class="modal-back" onclick="closeDetailModal()">
-        ← My Capsules
-      </button>
-
-      <div class="modal-lock-icon">🔒</div>
-
-      <div class="modal-title-row">
-        <h2 class="modal-title">To: Future Me</h2>
-        <span class="status-badge status-locked">Locked</span>
-      </div>
-
-      <!-- Big Countdown -->
-      <div class="big-countdown">
-        <div class="big-cd-unit">
-          <span class="big-cd-val" id="modal-cd-days">--</span>
-          <span class="big-cd-lbl">Days</span>
-        </div>
-        <span class="big-cd-sep">:</span>
-        <div class="big-cd-unit">
-          <span class="big-cd-val" id="modal-cd-hours">--</span>
-          <span class="big-cd-lbl">Hours</span>
-        </div>
-        <span class="big-cd-sep">:</span>
-        <div class="big-cd-unit">
-          <span class="big-cd-val" id="modal-cd-mins">--</span>
-          <span class="big-cd-lbl">Minutes</span>
-        </div>
-        <span class="big-cd-sep">:</span>
-        <div class="big-cd-unit">
-          <span class="big-cd-val" id="modal-cd-secs">--</span>
-          <span class="big-cd-lbl">Seconds</span>
-        </div>
-      </div>
-
-      <div class="modal-divider"></div>
-
-      <!-- Meta Info -->
-      <div class="modal-meta">
-        <div class="modal-meta-item">
-          <span class="modal-meta-label">Created On</span>
-          <span class="modal-meta-value">Jan 1, 2026</span>
-        </div>
-        <div class="modal-meta-item">
-          <span class="modal-meta-label">Unlocks</span>
-          <span class="modal-meta-value">Dec 31, 2030</span>
-        </div>
-        <div class="modal-meta-item">
-          <span class="modal-meta-label">Type</span>
-          <span class="modal-meta-value">✉️ Personal</span>
-        </div>
-        <div class="modal-meta-item">
-          <span class="modal-meta-label">Encryption</span>
-          <span class="modal-meta-value">🔐 AES-256</span>
-        </div>
-      </div>
-
-      <!-- Sealed Message Preview -->
-      <div class="sealed-msg">
-        <div class="sealed-msg-text">
-          Hey future me, I hope you've achieved everything we dreamed of.
-          Remember when we used to sit up late and plan all the things we'd do?
-          I wonder if you're still chasing those dreams...
-        </div>
-        <div class="sealed-msg-overlay">
-          <span>🔒</span>
-          <p>Your message is sealed until the unlock date</p>
-        </div>
-      </div>
-
-      <div class="capsule-tags" style="margin-bottom: 1.5rem;">
-        <span class="tag">✉️ Message</span>
-        <span class="tag">🔐 Encrypted</span>
-        <span class="tag">👤 To: Future Me</span>
-      </div>
-
-      <div class="modal-actions">
-        <button class="btn btn-primary">🔔 Set Reminder</button>
-        <button class="btn btn-ghost">📤 Share Capsule</button>
-        <button class="btn btn-danger">🗑️ Delete</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════
-       SCREEN 7 — CELEBRATION MODAL
-  ══════════════════════════════════ -->
-  <div class="celebration-overlay" id="celebration-modal">
-    <canvas id="confetti-canvas"></canvas>
-    <div class="celebration-card">
-      <span class="celebration-icon">🎁</span>
-      <h2>Your Capsule Has Arrived!</h2>
-      <p class="celebration-subtitle">Sent by Past You on January 1, 2026 &bull; After 1,826 days of waiting</p>
-
-      <div class="modal-divider"></div>
-
-      <div class="revealed-message">
-        "Hey future me, if you're reading this, it's been five years. I hope you're still chasing those dreams we talked
-        about in that small apartment. I'm writing this from the balcony, watching the sunset over the park.
-        <br /><br />
-        Are we still traveling? Did we finally learn how to cook that perfect risotto? Most importantly, I hope you're
-        happy. The photo attached is from that trip to the coast — remember the smell of the salt air?
-        <br /><br />
-        With love, your 2026 self."
-      </div>
-
-      <div class="attachment-preview">
-        <div class="attachment-thumb">🌅</div>
-        <div class="attachment-info">
-          <p class="attachment-name">Coastline_Memory.jpg</p>
-          <p class="attachment-size">High-quality photo • 4.2 MB</p>
-        </div>
-        <button class="btn btn-ghost" style="padding: 0.5rem 1rem; font-size: 0.85rem;">View</button>
-      </div>
-
-      <div class="journey-timeline">
-        <div class="timeline-dot start"></div>
-        <span>Jan 1, 2026</span>
-        <div class="timeline-line"></div>
-        <span>5 years, 3 months</span>
-        <div class="timeline-line"></div>
-        <span>Delivered ✨</span>
-        <div class="timeline-dot end"></div>
-      </div>
-
-      <div class="celebration-actions">
-        <button class="btn btn-ghost">💾 Save</button>
-        <button class="btn btn-ghost">📤 Share Memory</button>
-        <button class="btn btn-primary" onclick="closeCelebration()">✉️ Write a New Capsule</button>
-      </div>
-    </div>
-  </div>
-
-  <script src="app.js"></script>
 </body>
-
 </html>
